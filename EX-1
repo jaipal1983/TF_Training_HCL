@@ -1,0 +1,26 @@
+1) install terraform
+2) setup env variable
+3) open powersheel and execute terraform -v to see the version
+4) create a folder on desktop "hcl"
+5) open atom and add that folder
+6) create a provider.tf file as shown below
+
+provider "aws" {
+  access_key = "write your access key"
+  secret_key = "write your secret key"
+  region = "ap-south-1"
+}
+
+7) once done, save the file and run terraform init and explore the hidden .terraform folder and check for the latest version on the doc
+8) create a resource file as shown below
+
+resource "aws_instance" "webserver" {
+  ami = "ami-0ba259e664698cbfc"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "write your name"
+  }
+}
+
+9) run terraform plan
+10) let me know
