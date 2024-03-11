@@ -1,0 +1,9 @@
+1) run terraform destroy command to delete everything. Check whether you terraform.tfstate is empty or not. It should be empty
+2) create a ec2 instance with the same file in earlier exercise
+3) go to the cloud and create a security group named as "yourname" and apply it on the instance
+4) go to cli and check the security group if tfstate file and run terraform refresh and check the security group whether it is updated or not
+5) terraform apply command to see that it checks for the security group or not.
+
+Question
+1) create an s3 bucket on amazon
+2) create an Elastic IP on amazon
