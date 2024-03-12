@@ -1,0 +1,8 @@
+Question1
+
+Create a security group named as "your name" and add the inbound port as 22 and 80 and add all port in outbound. 
+Once the security group is created, it should be automatically attached to an ec2 instance of "ubuntu 22" image and the name of ec2 instance must be "yourname"
+Also create an key pair which should be attached to the aws instance so that you can login via the terminal.
+Once the task is done, public ip and public dns of aws_instance must be printed on the screen. You can reefr output variable for that.
+Also, define local for multiple tags as "type=prod" and "server=web" and make sure they are applied on the ec2 instance.
+Note - Command to login to ec2 is "ssh -i <location of private key> ubuntu@IP
