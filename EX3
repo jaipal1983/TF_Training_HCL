@@ -7,3 +7,15 @@ Once the task is done, public ip and public dns of aws_instance must be printed 
 Also, define local for multiple tags as "type=prod" and "server=web" and make sure they are applied on the ec2 instance.
 Make sure that you are defining variable for ami id and instance type and call them in aws_instance resource. Variable values must be taken from terraform.tfvars
 Note - Command to login to ec2 is "ssh -i <location of private key> ubuntu@IP
+
+Question2
+
+1) Destroy everything which you have created in question 1.
+2) You need to declare a variable as "region" and do not define any value for it.
+3) You need to define a map as below
+  us-east-2 = ami id of amazon linux
+  us-west-1 = ami id of ubuntu
+  ap-south-1 = ami id of ubuntu
+4) When you give region while running terraform plan command, if the region is ap-south-1, the ami id from the defined map should be taken automatically and ec2 instance
+   must be created. make sure that 80 port is allowed on the instance. once instance is created login to the instance and setup a nginx server and make sure when
+   you hit the public ip in browser, it should give you nginx default page.
