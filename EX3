@@ -5,4 +5,5 @@ Once the security group is created, it should be automatically attached to an ec
 Also create an key pair which should be attached to the aws instance so that you can login via the terminal.
 Once the task is done, public ip and public dns of aws_instance must be printed on the screen. You can reefr output variable for that.
 Also, define local for multiple tags as "type=prod" and "server=web" and make sure they are applied on the ec2 instance.
+Make sure that you are defining variable for ami id and instance type and call them in aws_instance resource. Variable values must be taken from terraform.tfvars
 Note - Command to login to ec2 is "ssh -i <location of private key> ubuntu@IP
