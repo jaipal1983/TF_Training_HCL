@@ -1,0 +1,47 @@
+resource "aws_instance" "webserver" {
+  ami = "ami-03bb6d83c60fc5f7c"
+  instance_type = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.kushalsg.id]
+  key_name = aws_key_pair.deployer.key_name
+}
+
+resource "aws_eip" "lb" {
+  domain   = "vpc"
+}
+
+resource "aws_key_pair" "deployer" {
+  key_name   = "deployer-key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4VF/LJWdu7OQiLrz1BRu7+8L3XFWrmO8ICcdGF89wb2n+2jAqGMNNsWJIIPkkDYpnD69KcAj7DVtxav5m5wuUapDUGU/tvPGbHRt7CEIVBAKeKKiTDijp0Vo4AnMyrOhWqna65H2S/DwfNWgXUMC1Y2D50eucZCWW7T3rPBzXHdAq1VLrpy61iEM4NkxiljMi3m+5qHi/0+55v1/qadIaCgDxE8f3q1+lwl3ANquifjuku22YQmGbEKsrLyWsciIriW2WQ4Xmba1/VBklGDAhPjysf/Lddq+iGe7JZixPfGi1A+cvXHZgEl3YbmI3q+i0tY37pTYwDjjuOWD9huZXfl5Ti+S9BE6ouhCcLKAtzU5Pt5lVf99/IcdnvrewSeOMh+1zY8uKO1BpFt27u5YV+y5yosM8SuQIiTvj2KXOWrZKpsGEatrd7QIh+m55bqOraxygTuCMrmXHkEXBaXIyJBWlFACg7PFWnBguPkjA9kgAcohUKapEVUnvCM5ivvc= kushal@gabbar"
+}
+
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.webserver.id
+  allocation_id = aws_eip.lb.id
+}
+
+resource "aws_security_group" "kushalsg" {
+  name        = "kushalsg"
+  ingress {
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    cidr_blocks     = ["0.0.0.0/0"]
+}
+  egress {
+    from_port       = 0
+    to_port         = 65535
+    protocol        = "tcp"
+    cidr_blocks     = ["0.0.0.0/0"]
+  }
+}
+
+output "public_ip" {
+  description = "It is an public IP of webserver instance"
+  value = aws_instance.webserver.public_ip
+}
+
+output "public_dns" {
+  description = "It is an public DNS of webserver instance"
+  value = aws_instance.webserver.public_dns
+}
