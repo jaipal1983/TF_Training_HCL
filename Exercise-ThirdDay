@@ -1,0 +1,18 @@
+Question1)
+Create 5 iam users with names as "yourname-a","yourname-b","yourname-c","yourname-d","yourname-c"
+Make sure that count parameter should automatically detect the length of the list of username and get applied.
+once done, destroy the resources
+
+Queston2)
+Create an ec2 instance with name "yourname-question2" and create an security group with ingress port as 80,22,3306 and egress ports as all. Make sure that the security group is attached to the instance.
+Create a public key and private key using terraform resource and make sure that public key is attached to the instance and the private key is saved at your current working directory with name "yourname.rsa"
+Once done, try to login to the instance and make sure that it works.
+once done, destroy the resources
+
+Question3) 
+
+1 - create a security group with "yourname_sg1" - range is 80-88 and 22-23 -- attached with the aws instance named "yourname_first" - "seperate key pair" - ami should be searched by data source for ubuntu-22 latest
+2 - Create a security group with "yourname_sg2" - range is 80-84 and 22-25 -- attached with the aws instance named "yourname_second"  - seperate key pair - ami should be searched by data source for amazon linux latest
+3) create a s3 bucket and once it is created, use a datasource for s3 bucket to get its ID
+4) use Data source to get the private IP of both the instance you created above
+once done, destroy the resources
