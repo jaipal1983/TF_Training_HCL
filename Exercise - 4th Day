@@ -1,14 +1,17 @@
 Question 1
 
-Create a ec2 instance with 22 and 80 port as ingress and all ports as ingress. Create a "echo hello" script on your system and use file provisioner to copy that script to the remote user home directory.
+Create a ec2 instance with 22 and 80 port as ingress and all ports as egress. Create a "echo hello" script on your system and use file provisioner to copy that script to the remote user home directory.
 Also, use one more remote provisioner which should configure nginx on the server and when you hit the public ip, you see the default nginx page.
 
 Question 2
-Create two workspace as testing and staging. create ec2 instance in both the workspaces and make sure the instance names are there associated workspace name. When running apply command in staging workspace,
-2 instance must be create and when you run it in testing, 1 should be created.
+Create two workspace as testing and staging. create ec2 instance in both the workspaces and make sure the instance names are there associated workspace name-yourname. When running apply command in staging workspace,
+2 instance must be created and when you run it in testing, 1 should be created.
 
 Question 3
 create 3 iam users and make sure to configure output in a way that it prints all the iam users arn. 
 
 Question 4
 create a module of ec2 instance in a way that you can change the instance type and ami id while executing the apply command.
+
+Question 5
+download an iam module from terraform registry and have a look at that.
